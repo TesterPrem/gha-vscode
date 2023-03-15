@@ -1,0 +1,33 @@
+name: Checking Action Workflow
+on: [push, pull_request]
+jobs:
+  Using-Docker-action:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checking docker 
+        id: hello
+        uses: actions/hello-world-docker-action@v1
+        with:
+          who-to-greet: KM PREMANANDH
+
+      - name: Checking the Time
+        run: echo ${{ steps.hello.outputs.time}}
+
+   
+      - name: Checking out the Repository
+        uses: actions/checkout@v2
+
+      - name: Print Some Commands
+        run: |
+          pwd
+          ls -a 
+
+      - name: Using Inbuilt Environment Variables
+        run: |
+          echo $GITHUB_SHA
+          echo $GITHUB_WORKSPACE
+          echo $GITHUB_REPOSITORY
+
+
+
+    
